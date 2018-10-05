@@ -1,0 +1,41 @@
+<div class="loginmodal-container">
+  <h1>Login to Your Account</h1><br>
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
+    <input
+      type="text"
+      name="username"
+      placeholder="Email"
+      ngModel
+      required
+      #username="ngModel"
+    >
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      ngModel
+      required
+      #password="ngModel"
+    >
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!f.valid || loginInProgress"
+      >Login</button>
+      <div 
+        *ngIf="invalidUser"
+        >
+        <label 
+        class="label label-danger form-control"
+      >Invalid Username or Password</label>
+      </div>
+      <div *ngIf="loginInProgress">
+        <img
+          src="https://loading.io/spinners/color-bar/lg.colorful-progress-loader.gif"
+          alt="Image"
+          style="width: 50px; height: 50px"
+          >
+      </div>
+  </form>
+</div>
+<router-outlet></router-outlet>
